@@ -8,6 +8,8 @@ Created on Fri Oct 30 13:13:58 2020
 
 import random as rn
 
+
+
 def atm(bal,acc):
     restart=['Y','y','Yes','yes']
     temp=restart
