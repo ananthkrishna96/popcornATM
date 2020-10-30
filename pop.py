@@ -8,17 +8,23 @@ Created on Fri Oct 30 13:13:58 2020
 
 import random as rn
 
-
-def atm(bal,pn):
+def atm(bal,acc):
     restart=['Y','y','Yes','yes']
     temp=restart
     mon=[50,100,200,500,2000]
-    chance=2
-    balance=bal
+    chance=1
+    tempbalance=bal
+    balance=0
+    
+    pn=0
    
     
-    while chance>=0:
+    while chance>0:
         pin=int(input("\n Please Enter your PIN code: "))
+        for i in acc:
+            if pin == acc[i]['pin']:
+                pn=acc[i]['pin']
+                print('\n \n Welcome ',acc[i]['name'])
         if pin == pn:
             print("\n You pin looks cool ! \n")
             while restart not in ('n', 'N', 'NO', 'no'):
@@ -29,21 +35,23 @@ def atm(bal,pn):
                 opt=int(input(" \n What would you like to choose: "))
                 
                 if opt ==1:
-                    print("\n Your BALANCE is: ", bal)
+                    print("\n Your BALANCE is: ", tempbalance)
                     x=input(" \n Go Back ?: ")
                     if not x in restart:
                         print(" Thank You !")
+                        chance-=1
                         break
                 elif opt == 2:
-                    op2=['Y','Yes','yes']
+                   
                     print(" \n \n Please Choose Denominations of 50, 100, 200, 500, 2000")
                     withdraw=float(input(" \n Enter the amount to withdraw: "))
                     if withdraw in mon:
                         balance=balance-withdraw
                         print(" \n Your New  BALANCE is: ", balance)
-                        x=input(" \n Go Back ?: ")
-                        if not x in restart:
+                    x=input(" \n Go Back ?: ")
+                    if  not x  in restart:
                             print(" \n Thank You !")
+                            chance-=1
                             break
                     elif withdraw not in mon:
                         print("\n Invalid amount !")
@@ -53,12 +61,16 @@ def atm(bal,pn):
                     balance+=py
                     print(" \n Your BALANCE is: ", balance)
                     x=input(" \n Go Back ?: ")
-                    if not x in restart:
+                    if x not in restart:
                         print(" \n Thank You !")
+                        chance-=1
                         break
                     
                 elif opt==4:
                     print("\n Your Card is Removed \n Thank You !")
+                    
+                    restart!=temp
+                    chance-=1
                     break
                 else:
                     print("\n Choose Correct Option  !")
@@ -72,24 +84,10 @@ def atm(bal,pn):
     
 bal=int(rn.randrange(5000,100000))
    
-acc = {
-       1 : {
-               "name" : "Ananth",
-               "pin" : 1234
-           },
-       2 : {
-               "name" : "Tobias",
-               "pin" : 1111
-           },
-       3:  {
-               "name" : "Linus",
-               "pin" : 2222
-           }
-      }
+acc = {1: {'name': 'Ananth', 'pin': 1234},
+       2: {'name': 'Krishna', 'pin': 1111},
+       3: {'name': 'Ashish', 'pin': 2222}}
 
-
-pn=1234
-    
 print(" \n \n Welcome to POPCORN ATM")
-atm(bal,pn)
+atm(bal,acc)
 
