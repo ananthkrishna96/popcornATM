@@ -24,7 +24,7 @@ def atm(bal):
     mon=[50,100,200,500,2000]
     chance=1
     tempbalance=bal
-    balance=0
+    balance=bal
     
     pn=0
    
@@ -47,7 +47,10 @@ def atm(bal):
                 opt=int(input(" \n What would you like to choose: "))
                 
                 if opt ==1:
-                    print("\n Your BALANCE is: ", tempbalance)
+                    if tempbalance == balance:
+                        print("\n Your BALANCE is: ", tempbalance)
+                    else:
+                        print("\n Your BALANCE is: ", balance)
                     x=input(" \n Go Back ?: ")
                     if not x in restart:
                         print(" Thank You !")
