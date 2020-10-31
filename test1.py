@@ -36,9 +36,9 @@ def atm(bal):
             for acc in file:
                 if pin == acc['pin']:
                    pn=acc['pin']
-                   print('\n \n Welcome ',acc['name'])
+                   print('\n \n Welcome ',acc['name'], 'You pin looks cool ! \n \n ')
         if pin == pn:
-            print("\n You pin looks cool ! \n")
+            
             while restart not in ('n', 'N', 'NO', 'no'):
                 print('Press 1 for BALANCE \n')
                 print('Press 2 for WITHDRAWAL\n')
@@ -97,9 +97,9 @@ def atm(bal):
                 print("\n No more tries  !")
                 break
     
-bal=int(rn.randrange(5000,100000))
+b=int(rn.randrange(5000,100000))
 
 
 print(" \n \n Welcome to POPCORN ATM")
-atm(bal)
+atm(b)
 
